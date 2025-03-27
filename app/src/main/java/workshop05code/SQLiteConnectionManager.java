@@ -11,8 +11,6 @@ import java.sql.Statement;
 
 //Import for logging exercise
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
@@ -44,10 +42,10 @@ public class SQLiteConnectionManager {
   private static final String VALID_WORDS_DROP_TABLE_STRING = "DROP TABLE IF EXISTS validWords;";
   private static final String VALID_WORDS_CREATE_STRING = """
   CREATE TABLE validWords (
-      + " id integer PRIMARY KEY,
-      + " word text NOT NULL"
-      + ");
-      """;
+      id integer PRIMARY KEY,
+      word text NOT NULL
+  );
+  """;
           
   /**
    * Set the database file name in the sqlite project to use

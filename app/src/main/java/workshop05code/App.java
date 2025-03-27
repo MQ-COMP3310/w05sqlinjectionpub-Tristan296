@@ -70,7 +70,6 @@ public class App {
         }
 
         // let's get them to enter a word
-
         try (Scanner scanner = new Scanner(System.in)) {
             logger.info("Enter a 4 letter word for a guess or q to quit: ");
             String guess = scanner.nextLine();
