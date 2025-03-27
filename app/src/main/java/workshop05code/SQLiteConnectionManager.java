@@ -32,20 +32,18 @@ public class SQLiteConnectionManager {
   private String databaseURL = "";
 
   private static final String WORDLE_DROP_TABLE_STRING = "DROP TABLE IF EXISTS wordlist;";
-  private static final String WORDLE_CREATE_STRING = """
-    CREATE TABLE wordlist (
-      id integer PRIMARY KEY,
-      word text NOT NULL
-    );
-    """;
+  private static final String WORDLE_CREATE_STRING = 
+    "CREATE TABLE wordlist (" +
+    "id integer PRIMARY KEY, " +
+    "word text NOT NULL" +
+    ");";
 
   private static final String VALID_WORDS_DROP_TABLE_STRING = "DROP TABLE IF EXISTS validWords;";
-  private static final String VALID_WORDS_CREATE_STRING = """
-  CREATE TABLE validWords (
-      id integer PRIMARY KEY,
-      word text NOT NULL
-  );
-  """;
+  private static final String VALID_WORDS_CREATE_STRING = 
+    "CREATE TABLE validWords (" +
+    "id integer PRIMARY KEY, " +
+    "word text NOT NULL" +
+    ");";
           
   /**
    * Set the database file name in the sqlite project to use
