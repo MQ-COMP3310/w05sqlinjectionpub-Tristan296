@@ -1,5 +1,4 @@
 ﻿# Workshop Week 5
-<<<<<<< HEAD
 
 ## SQL Injections - Varun Irani
 
@@ -7,6 +6,3 @@
 2. Data modifications, authentication and authorization, API calls, Error logs and accessing sensitive data can be logged server side.
 3. Viewing or editing vaccionation records, logging in and out, recreations of records and deletion, and role based access actions should be logged.
 4. viewing patient records, exporting of data, modifying data, access by third parties and unauthorized users
-=======
- ## SQL Injections
->>>>>>> parent of d22b1a3 (Changed README.md and using installed Gradle 8.12.1)

@@ -11,6 +11,7 @@ import java.sql.Statement;
 
 //Import for logging exercise
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
@@ -33,20 +34,16 @@ public class SQLiteConnectionManager {
   private String databaseURL = "";
 
   private static final String WORDLE_DROP_TABLE_STRING = "DROP TABLE IF EXISTS wordlist;";
-  private static final String WORDLE_CREATE_STRING = """
-      CREATE TABLE wordlist (
-       id integer PRIMARY KEY,
-       word text NOT NULL
-      );
-      """;
+  private static final String WORDLE_CREATE_STRING = "CREATE TABLE wordlist (\n"
+      + " id integer PRIMARY KEY,\n"
+      + " word text NOT NULL\n"
+      + ");";
 
   private static final String VALID_WORDS_DROP_TABLE_STRING = "DROP TABLE IF EXISTS validWords;";
-  private static final String VALID_WORDS_CREATE_STRING = """
-      CREATE TABLE validWords (
-       id integer PRIMARY KEY,
-       word text NOT NULL
-      );
-      """;
+  private static final String VALID_WORDS_CREATE_STRING = "CREATE TABLE validWords (\n"
+      + " id integer PRIMARY KEY,\n"
+      + " word text NOT NULL\n"
+      + ");";
 
   /**
    * Set the database file name in the sqlite project to use
@@ -68,11 +65,12 @@ public class SQLiteConnectionManager {
     try (Connection conn = DriverManager.getConnection(databaseURL)) {
       if (conn != null) {
         DatabaseMetaData meta = conn.getMetaData();
-        logger.log(Level.INFO, "The driver name is {0}", meta.getDriverName());
-        logger.log(Level.INFO, "A new database has been created.");
+        System.out.println("The driver name is " + meta.getDriverName());
+        System.out.println("A new database has been created.");
+
       }
     } catch (SQLException e) {
-      logger.log(Level.WARNING, e.getMessage());
+      System.out.println(e.getMessage());
     }
   }
 
@@ -91,7 +89,7 @@ public class SQLiteConnectionManager {
           return true;
         }
       } catch (SQLException e) {
-        logger.log(Level.WARNING, e.getMessage());
+        System.out.println(e.getMessage());
         return false;
       }
     }
@@ -116,7 +114,7 @@ public class SQLiteConnectionManager {
         return true;
 
       } catch (SQLException e) {
-        logger.log(Level.WARNING, e.getMessage());
+        System.out.println(e.getMessage());
         return false;
       }
     }
@@ -138,7 +136,7 @@ public class SQLiteConnectionManager {
       pstmt.setString(2, word);
       pstmt.executeUpdate();
     } catch (SQLException e) {
-      logger.log(Level.WARNING, e.getMessage());
+      System.out.println(e.getMessage());
     }
 
   }
@@ -164,7 +162,7 @@ public class SQLiteConnectionManager {
       return false;
 
     } catch (SQLException e) {
-      logger.log(Level.WARNING, e.getMessage());
+      System.out.println(e.getMessage());
       return false;
     }
 
